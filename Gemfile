@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -17,11 +16,14 @@ gem 'slim-rails'
 
 gem 'sprockets', '2.12.3'
 
-# Use angular as the JavaScript library
-gem 'rails-assets-angular'
 gem 'angular-rails'
 gem 'angular-rails-templates'
-gem 'rails-assets-angular-ui-router'
+
+source 'https://rails-assets.org' do
+  # Use angular as the JavaScript library
+  gem 'rails-assets-angular'
+  gem 'rails-assets-angular-ui-router'
+end
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -50,6 +52,8 @@ group :development, :test do
   gem 'rubocop'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'railroady'
+  gem 'rails-erd'
 end
 
 group :development do

@@ -11,7 +11,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022163948) do
+ActiveRecord::Schema.define(version: 20151102171329) do
+
+  create_table "actuators", force: :cascade do |t|
+    t.string   "number",     limit: 255
+    t.boolean  "state"
+    t.integer  "room_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "actuators", ["room_id"], name: "index_actuators_on_room_id", using: :btree
+
+  create_table "humidity_data", force: :cascade do |t|
+    t.decimal  "humid",                precision: 10
+    t.integer  "sensor_id",  limit: 4
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "humidity_data", ["sensor_id"], name: "index_humidity_data_on_sensor_id", using: :btree
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "sqm",        limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "sensors", force: :cascade do |t|
+    t.string   "number",     limit: 255
+    t.boolean  "state"
+    t.integer  "room_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "sensors", ["room_id"], name: "index_sensors_on_room_id", using: :btree
+
+  create_table "temperature_data", force: :cascade do |t|
+    t.decimal  "temp",                 precision: 10
+    t.integer  "sensor_id",  limit: 4
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "temperature_data", ["sensor_id"], name: "index_temperature_data_on_sensor_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -31,4 +76,8 @@ ActiveRecord::Schema.define(version: 20151022163948) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "actuators", "rooms"
+  add_foreign_key "humidity_data", "sensors"
+  add_foreign_key "sensors", "rooms"
+  add_foreign_key "temperature_data", "sensors"
 end
