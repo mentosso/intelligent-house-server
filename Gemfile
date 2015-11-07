@@ -23,6 +23,8 @@ source 'https://rails-assets.org' do
   # Use angular as the JavaScript library
   gem 'rails-assets-angular'
   gem 'rails-assets-angular-ui-router'
+  gem 'rails-assets-font-awsome'
+  gem 'rails-assets-bootstrap-css'
 end
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
