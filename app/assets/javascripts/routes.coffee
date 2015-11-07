@@ -8,3 +8,8 @@ angular.module 'HouseApp'
         controller: 'HomeCtrl',
         templateUrl: 'home.html'
       })
+      .state('login', {
+        url: '/login',
+        controller: 'UserCtrl',
+        templateUrl: 'login.html'
+      })

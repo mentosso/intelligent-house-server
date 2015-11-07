@@ -3,4 +3,15 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery
   skip_before_filter :verify_authenticity_token
+  respond_to :json
+
+  protected
+
+  def authenticate_user!
+    if user_signed_in?
+      super
+    else
+      redirect_to '/#/login'
+    end
+  end
 end

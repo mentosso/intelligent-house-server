@@ -18,6 +18,7 @@ gem 'sprockets', '2.12.3'
 
 gem 'angular-rails'
 gem 'angular-rails-templates'
+gem 'jquery-rails'
 
 source 'https://rails-assets.org' do
   # Use angular as the JavaScript library
@@ -25,6 +26,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-ui-router'
   gem 'rails-assets-font-awsome'
   gem 'rails-assets-bootstrap-css'
+  gem 'rails-assets-jquery-ui'
 end
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
