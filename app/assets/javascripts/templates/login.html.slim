@@ -1,7 +1,9 @@
 link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"
-.login-block
-  h1 Sign In
-  form
-    input#username placeholder="E-mail" type="text" value="" ng-model="email"
-    input#password placeholder="Password" type="password" value="" ng-model="password"
-    button ng-click="loginUser(email, password)" Submit
+.login
+  .login-block
+    h1 Sign In
+    i.fa.fa-envelope-o
+    form
+      input#username placeholder="E-mail" type="text" value="" ng-model="email"
+      input#password placeholder="Password" type="password" value="" ng-model="password"
+      button ng-click="loginUser(email, password)" Submit

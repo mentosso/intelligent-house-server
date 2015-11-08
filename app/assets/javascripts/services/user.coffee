@@ -5,6 +5,3 @@ angular.module('HouseApp').factory 'User', ($http) ->
 
   loginUser: (email, password) ->
     $http.post('/users/sign_in', {user: {email: email, password: password}})
-
-  checkUser: () ->
-    $http.post('/users/check.json')

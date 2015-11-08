@@ -1,8 +1,10 @@
+#= require_self
 #= require angular
 #= require jquery
 #= require angular-ui-router
 #= require angular-rails-templates
 #= require bootstrap-css
+#= require angular-devise
 
 #= require app
 #= require routes

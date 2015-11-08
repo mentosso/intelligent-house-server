@@ -1,5 +1,5 @@
 angular.module 'HouseApp'
-  .config ($stateProvider, $urlRouterProvider, User) ->
+  .config ($stateProvider, $urlRouterProvider) ->
     $urlRouterProvider.otherwise('/home')
 
     $stateProvider
@@ -7,10 +7,6 @@ angular.module 'HouseApp'
         url: '/home',
         controller: 'HomeCtrl',
         templateUrl: 'home.html'
-        resolve:{
-            User.checkUser().success (data) ->
-              $location('/login') if data == true
-        }
       })
       .state('login', {
         url: '/login',
