@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  post 'users/check' => 'home#check'
+
   resource :room
 
   # Example of regular route:
