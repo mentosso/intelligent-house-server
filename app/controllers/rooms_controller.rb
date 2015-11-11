@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
+    render json: Room.all
   end
 
   # GET /rooms/1
@@ -62,13 +62,14 @@ class RoomsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_room
-      @room = Room.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def room_params
-      params[:room]
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_room
+    @room = Room.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def room_params
+    params.permit(:name, :sqm)
+  end
 end

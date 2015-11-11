@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   post 'users/check' => 'home#check'
 
-  resource :room
+  resources :rooms
+  resources :sensors
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

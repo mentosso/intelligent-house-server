@@ -18,3 +18,13 @@ angular.module 'HouseApp'
         controller: 'UserCtrl',
         templateUrl: 'signup.html'
       })
+      .state('room', {
+        url: '/room',
+        controller: 'RoomCtrl',
+        templateUrl: 'room.html'
+      })
+      .state('sensor', {
+        url: '/sensor',
+        controller: 'SensorCtrl',
+        templateUrl: 'sensor.html'
+      })

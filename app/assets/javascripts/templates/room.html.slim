@@ -1,0 +1,8 @@
+form
+  input#username placeholder="Room's name" type="text" value="" ng-model="name"
+  input#password placeholder="SQM" type="text" value="" ng-model="sqm"
+  button ng-click="create(name, sqm)" Submit
+
+
+div ng-repeat="room in rooms"
+  | {{ room.name }}

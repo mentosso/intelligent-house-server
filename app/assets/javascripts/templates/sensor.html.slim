@@ -1,0 +1,17 @@
+select ng-model="roomSelected" selectpicker="" 
+  option data-subtext="{{room.name}}" ng-repeat="room in rooms" value="{{room}}" {{room.name}}
+
+div
+  | {{ roomSelected.id }}
+
+
+div ng-show="roomSelected"
+  form
+    input#username placeholder="Sensor's number" type="text" value="" ng-model="number"
+    button ng-click="create(number)" Submit
+
+
+div ng-repeat="sensor in sensors"
+  | {{ sensor.number }}
+
+
