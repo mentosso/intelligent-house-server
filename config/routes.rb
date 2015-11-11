@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   post 'users/check' => 'home#check'
+  get 'home/dashboard' => 'home#dashboard'
 
   resources :rooms
   resources :sensors

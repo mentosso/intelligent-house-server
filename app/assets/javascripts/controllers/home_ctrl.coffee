@@ -1,5 +1,5 @@
 angular.module 'HouseApp'
-  .controller 'HomeCtrl', ($http, $scope, $location, Auth)->
+  .controller 'HomeCtrl', ($http, $scope, $location, Auth, Home)->
     Auth.currentUser().then((user) ->
       # User was logged in, or Devise returned
       # previously authenticated session.
@@ -14,3 +14,10 @@ angular.module 'HouseApp'
       (error) ->
         console.log('error')
       )
+
+    $scope.avg = []
+    $scope.dashboard = () ->
+      Home.dashboard().then((data) ->
+        $scope.avg = data.data
+      )
+    $scope.dashboard()

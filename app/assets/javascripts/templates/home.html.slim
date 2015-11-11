@@ -7,9 +7,6 @@ nav.navbar.navbar-default.navbar-cls-top role="navigation" style=("margin-bottom
       span.icon-bar
     a.navbar-brand href="/#/home"  InteliHouse
   .header-right
-    a.btn.btn-info href="message-task.html" title="New Message"
-      b 30
-      i.fa.fa-envelope-o.fa-2x
     a.btn.btn-primary href="message-task.html" title="New Task"
       b 40
       i.fa.fa-bars.fa-2x
@@ -24,176 +21,74 @@ nav.navbar-default.navbar-side role="navigation"
           / img.img-thumbnail src="assets/images/user.png" /
           .inner-text
             | {{user.email}}
-            br
-            small Last Login : 2 Weeks Ago
       li
-        a.active-menu href="index.html" 
+        a.active-menu href="/#/home" 
           i.fa.fa-dashboard
           | Dashboard
       li
-        a href="#" 
-          i.fa.fa-desktop
-          | UI Elements
-          span.fa.arrow
+        a href="/#/room" 
+          i.fa.fa-home
+          | Rooms
       li
-        a href="#" 
-          i.fa.fa-yelp
-          | Extra Pages
-          span.fa.arrow
-        ul.nav.nav-second-level
-          li
-            a href="#" 
-              i.fa.fa-bicycle
-              | Second Level Link
-          li
-            a href="#" 
-              i.fa.fa-flask
-              | Second Level Link
-          li
-            a href="#" 
-              | Second Level Link
-              span.fa.arrow
-            ul.nav.nav-third-level
-              li
-                a href="#" 
-                  i.fa.fa-plus
-                  | Third Level Link
-              li
-                a href="#" 
-                  i.fa.fa-comments-o
-                  | Third Level Link
-      li
-        a href="blank.html" 
-          i.fa.fa-square-o
-          | Blank Page
+        a href="/#/sensor" 
+          i.fa.fa-server
+          | Sensors
+      /   ul.nav.nav-second-level
+      /     li
+      /       a href="#" 
+      /         i.fa.fa-bicycle
+      /         | Second Level Link
+      /     li
+      /       a href="#" 
+      /         i.fa.fa-flask
+      /         | Second Level Link
+      /     li
+      /       a href="#" 
+      /         | Second Level Link
+      /         span.fa.arrow
+      /       ul.nav.nav-third-level
+      /         li
+      /           a href="#" 
+      /             i.fa.fa-plus
+      /             | Third Level Link
+      /         li
+      /           a href="#" 
+      /             i.fa.fa-comments-o
+      /             | Third Level Link
+      / li
+      /   a href="blank.html" 
+      /     i.fa.fa-square-o
+      /     | Blank Page
 /! /. NAV SIDE
 #page-wrapper
   #page-inner
     .row
       .col-md-12
         h1.page-head-line DASHBOARD
-        h1.page-subhead-line This is dummy text , you can replace it with your original text.
+        / h1.page-subhead-line This is dummy text , you can replace it with your original text.
     /! /. ROW
     .row
       .col-md-4
         .main-box.mb-red
           a href="#" 
-            i.fa.fa-bolt.fa-5x
-          h5 Zero Issues
+            i.wi.wi-thermometer 
+              |  {{ avg.avg_temp }}&deg;C
+          h5 inside
       .col-md-4
         .main-box.mb-dull
           a href="#" 
-            i.fa.fa-plug.fa-5x
-          h5 40 Task In Check
+            i.wi.wi-raindrops
+              |  {{ avg.avg_humid }}%
+          h5 inside 
       .col-md-4
         .main-box.mb-pink
           a href="#" 
-            i.fa.fa-dollar.fa-5x
-          h5 200K Pending
+            i.fa.fa-server.fa-5x
+              |  {{ avg.sensors }}
+          h5 active sensors
+             
     /! /. ROW
     .row
-      .col-md-8
-        .row
-          .col-md-12
-            #reviews.carousel.slide data-ride="carousel" 
-              .carousel-inner
-                .item.active
-                  .col-md-10.col-md-offset-1
-                    h4
-                      i.fa.fa-quote-left
-                      | Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit onec molestie non sem vel condimentum.
-                      i.fa.fa-quote-right
-                    .user-img.pull-right
-                      / img.img-u.image-responsive alt="" src="assets/images/user.gif" /
-                    h5.pull-right
-                      strong.c-black Lorem Dolor
-                .item
-                  .col-md-10.col-md-offset-1
-                    h4
-                      i.fa.fa-quote-left
-                      | Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit onec molestie non sem vel condimentum.
-                      i.fa.fa-quote-right
-                    .user-img.pull-right
-                      / img.img-u.image-responsive alt="" src="assets/images/user.png" /
-                    h5.pull-right
-                      strong.c-black Lorem Dolor
-                .item
-                  .col-md-10.col-md-offset-1
-                    h4
-                      i.fa.fa-quote-left
-                      | Lorem ipsum dolor sit amet, consectetur adipiscing  Lorem ipsum dolor sit amet, consectetur adipiscing elit onec molestie non sem vel condimentum.
-                      i.fa.fa-quote-right
-                    .user-img.pull-right
-                      / img.img-u.image-responsive alt="" src="assets/images/user.gif" /
-                    h5.pull-right
-                      strong.c-black Lorem Dolor
-              /! INDICATORS
-              ol.carousel-indicators
-                li.active data-slide-to="0" data-target="#reviews" 
-                li data-slide-to="1" data-target="#reviews" 
-                li data-slide-to="2" data-target="#reviews" 
-              /! PREVIUS-NEXT BUTTONS
-        /! /. ROW
-        hr/
-        .panel.panel-default
-          #carousel-example.carousel.slide data-ride="carousel" style=("border: 5px solid #000;") 
-            .carousel-inner
-              .item.active
-                / img alt="" src="assets/images/slideshow/1.jpg" /
-              .item
-                / img alt="" src="assets/images/slideshow/2.jpg" /
-              .item
-                / img alt="" src="assets/images/slideshow/3.jpg" /
-            /! INDICATORS
-            ol.carousel-indicators
-              li.active data-slide-to="0" data-target="#carousel-example" 
-              li data-slide-to="1" data-target="#carousel-example" 
-              li data-slide-to="2" data-target="#carousel-example" 
-            /! PREVIUS-NEXT BUTTONS
-            a.left.carousel-control data-slide="prev" href="#carousel-example" 
-              span.glyphicon.glyphicon-chevron-left
-            a.right.carousel-control data-slide="next" href="#carousel-example" 
-              span.glyphicon.glyphicon-chevron-right
-      /! /.REVIEWS &amp;  SLIDESHOW
-      .col-md-4
-        .panel.panel-default
-          .panel-heading
-            | Recent Chat History
-          .panel-body style=("padding: 0px;") 
-            .chat-widget-main
-              .chat-widget-left
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              .chat-widget-name-left
-                h4 Amanna Seiar
-              .chat-widget-right
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              .chat-widget-name-right
-                h4 Donim Cruseia
-              .chat-widget-left
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              .chat-widget-name-left
-                h4 Amanna Seiar
-              .chat-widget-right
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              .chat-widget-name-right
-                h4 Donim Cruseia
-          .panel-footer
-            .input-group
-              input.form-control placeholder=("Enter Message") type="text" /
-              span.input-group-btn
-                button.btn.btn-success type="button"  SEND
-      /! /.Chat Panel End
-    /! /. ROW
-    .row
-      .col-md-8
-        .list-group
-          a.list-group-item.active href="#" 
-          h4.list-group-item-heading LIST GROUP HEADING
-          p.list-group-item-text style=("line-height: 30px;") 
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       .col-md-4
         .panel.panel-info
           .panel-heading
@@ -331,64 +226,3 @@ nav.navbar-default.navbar-side role="navigation"
                 td @mdo
                 td
                   span.label.label-info 100090
-      .col-md-4
-        .panel.panel-success
-          .panel-heading
-            | Recent Comments Example
-          .panel-body
-            ul.media-list
-              li.media
-                .media-body
-                  .media
-                    a.pull-left href="#" 
-                      / img.media-object.img-circle.img-comments src="assets/images/user.png" /
-                    .media-body
-                      h4.media-heading Nulla gravida vitae
-                      | Donec sit amet ligula enim. Duis vel condimentum massa.
-                      /! Nested media object
-                      .media
-                        a.pull-left href="#" 
-                          / img.media-object.img-circle.img-comments src="assets/images/user.gif" /
-                        .media-body
-                          h4.media-heading Amet ligula enim
-                          | Donec sit amet ligula enim .
-                      .media
-                        a.pull-left href="#" 
-                          / img.media-object.img-circle.img-comments src="assets/images/user.png" /
-                        .media-body
-                          h4.media-heading Donec t ligula enim
-                          | Donec sit amet  amet ligula enim .
-    /! /.Row
-    hr/
-    .row style=("padding-bottom: 100px; `") 
-      .col-md-6
-        #comments-sec
-          h4
-            strong Compose Support Ticket
-          hr/
-          .form-group
-            label Please Write a Subject Line
-            input.form-control placeholder=("Enter Subject Of Ticket") required="required" type="text" /
-          .form-group
-            label Please Enter Issue
-            textarea.form-control rows="8" 
-          .form-group
-            button.btn.btn-success type="submit"  Compose &amp; Send Ticket
-      .col-md-6
-        .panel.panel-back.noti-box
-          span.icon-box.bg-color-black
-            i.fa.fa-bicycle
-          .text-box
-            p.main-text 52 Important Issues to Fix
-            p Please fix these issues to work smooth
-            p Time Left: 30 mins
-            hr/
-            p
-              span.color-bottom-txt
-                i.fa.fa-edit
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-            hr/
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.

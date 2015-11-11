@@ -1,8 +1,45 @@
-form
-  input#username placeholder="Room's name" type="text" value="" ng-model="name"
-  input#password placeholder="SQM" type="text" value="" ng-model="sqm"
-  button ng-click="create(name, sqm)" Submit
+nav.navbar.navbar-default.navbar-cls-top role="navigation" style=("margin-bottom: 0") 
+  .navbar-header
+    button.navbar-toggle data-target=".sidebar-collapse" data-toggle="collapse" type="button" 
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a.navbar-brand href="/#/home"  InteliHouse
+  .header-right
+    a.btn.btn-primary href="message-task.html" title="New Task"
+      b 40
+      i.fa.fa-bars.fa-2x
+    a.btn.btn-danger ng-click="logout()" title="Logout" 
+      i.fa.fa-exclamation-circle.fa-2x
+/! /. NAV TOP
+nav.navbar-default.navbar-side role="navigation" 
+  .sidebar-collapse
+    ul#main-menu.nav
+      li
+        .user-img-div
+          / img.img-thumbnail src="assets/images/user.png" /
+          .inner-text
+            | {{user.email}}
+      li
+        a.active-menu href="/#/home" 
+          i.fa.fa-dashboard
+          | Dashboard
+      li
+        a href="/#/room" 
+          i.fa.fa-home
+          | Rooms
+      li
+        a href="/#/sensor" 
+          i.fa.fa-server
+          | Sensors
+#page-wrapper
+  #page-inner
+    form
+      input#username placeholder="Room's name" type="text" value="" ng-model="name"
+      input#password placeholder="SQM" type="text" value="" ng-model="sqm"
+      button ng-click="create(name, sqm)" Submit
 
 
-div ng-repeat="room in rooms"
-  | {{ room.name }}
+    div ng-repeat="room in rooms"
+      | {{ room.name }}

@@ -20,6 +20,7 @@ gem 'angular-rails'
 gem 'angular-rails-templates'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
+gem 'weather-icons-rails'
 
 source 'https://rails-assets.org' do
   # Use angular as the JavaScript library
