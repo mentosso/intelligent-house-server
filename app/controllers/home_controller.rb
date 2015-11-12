@@ -24,7 +24,8 @@ class HomeController < ApplicationController
   def temp_chart
     data = []
     Sensor.all.each do |sensor|
-      data << TemperatureData.where(sensor_id: sensor.id).limit(10).pluck(:temp)
+      data << TemperatureData.where(sensor_id: sensor.id).order(id: :desc)
+        .limit(10).pluck(:temp)
     end
     render json: data
   end
