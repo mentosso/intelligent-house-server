@@ -20,4 +20,12 @@ class HomeController < ApplicationController
     }
     render json: res
   end
+
+  def temp_chart
+    data = []
+    Sensor.all.each do |sensor|
+      data << TemperatureData.where(sensor_id: sensor.id).limit(10).pluck(:temp)
+    end
+    render json: data
+  end
 end

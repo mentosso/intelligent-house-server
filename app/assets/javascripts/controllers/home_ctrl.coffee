@@ -21,3 +21,17 @@ angular.module 'HouseApp'
         $scope.avg = data.data
       )
     $scope.dashboard()
+
+    $scope.labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+    $scope.series = ['Sensor A', 'Sensor B']
+    $scope.data = [
+      [],
+      []
+    ]
+
+    $scope.temp_chart = () ->
+      Home.temp_chart().then((data) ->
+        console.log(data.data)
+        $scope.data = data.data
+      )
+    $scope.temp_chart()

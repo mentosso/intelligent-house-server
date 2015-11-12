@@ -5,6 +5,8 @@
 #= require angular-rails-templates
 #= require bootstrap-css
 #= require angular-devise
+#= require chartjs
+#= require angular-chart.js
 
 #= require app
 #= require routes

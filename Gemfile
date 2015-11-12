@@ -30,6 +30,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-css'
   gem 'rails-assets-jquery-ui'
   gem 'rails-assets-angular-devise'
+  gem 'rails-assets-chartjs'
+  gem 'rails-assets-angular-chart.js'
 end
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
