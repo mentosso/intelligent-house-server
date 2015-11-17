@@ -35,20 +35,16 @@ nav.navbar-default.navbar-side role="navigation"
           | Sensors
 #page-wrapper
   #page-inner
-    select ng-model="roomSelected" selectpicker="" 
-      option data-subtext="{{room.name}}" ng-repeat="room in rooms" value="{{room}}" {{room.name}}
+    .row
+      .col-md-4
+        label Choose room to add sensor to
+        select.form-control ng-model="roomSelected" selectpicker="" 
+          option data-subtext="{{room.name}}" ng-repeat="room in rooms" value="{{room}}" {{room.name}}
 
-    div
-      | {{ roomSelected.id }}
-
-
-    div ng-show="roomSelected"
-      form
-        input#username placeholder="Sensor's number" type="text" value="" ng-model="number"
-        button ng-click="create(number)" Submit
-
-
-    div ng-repeat="sensor in sensors"
-      | {{ sensor.number }}
-
-
+    .row
+      .col-md-4
+        div ng-show="roomSelected"
+          form
+            .form-group
+              input.form-control placeholder="Sensor's number" id="sensor" type="text" value="" ng-model="number"
+            a.btn.btn-success ng-click="create(number)" Submit

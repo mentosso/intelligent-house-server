@@ -35,11 +35,25 @@ nav.navbar-default.navbar-side role="navigation"
           | Sensors
 #page-wrapper
   #page-inner
-    form
-      input#username placeholder="Room's name" type="text" value="" ng-model="name"
-      input#password placeholder="SQM" type="text" value="" ng-model="sqm"
-      button ng-click="create(name, sqm)" Submit
-
-
-    div ng-repeat="room in rooms"
-      | {{ room.name }}
+    .row
+      .col-md-4
+        form
+          .form-group
+            input.form-control placeholder="Room's name" type="text" value="" ng-model="name"
+          .form-group
+            input.form-control placeholder="SQM" type="text" value="" ng-model="sqm"
+          a.btn.btn-success ng-click="create(name, sqm)" Add new room
+    .row
+      .col-md-4
+        table.table.table-hover
+          thead
+            th style="text-align: center; vertical-align: middle"
+              | Room name
+            th  style="text-align: center; vertical-align: middle"
+              | SQM
+          tbody
+            tr ng-repeat="room in rooms"
+              td style="text-align: center; vertical-align: middle"
+                | {{ room.name }}
+              td style="text-align: center; vertical-align: middle"
+                | {{ room.sqm }}
