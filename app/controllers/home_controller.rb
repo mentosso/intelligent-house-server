@@ -48,6 +48,6 @@ class HomeController < ApplicationController
     (0..59).each do |amount|
       arr << (time - amount.minute).strftime('%R')
     end
+    arr
   end
-  arr
 end
