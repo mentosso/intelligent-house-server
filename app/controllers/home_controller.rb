@@ -29,16 +29,18 @@ class HomeController < ApplicationController
     data = []
     time = create_labels(t_now)
     Sensor.all.each do |sensor|
+      temperature_data = TemperatureData.includes(:sensor).where(sensor_id: sensor.id,
+                                                                 created_at: (t_now - 1.hour..t_now))
       temp_data = []
       (0..59).reverse_each do |amount|
-        # temperature = temperature_data.select do |val|
-        #   val.sensor_id == sensor.id &&
-        #   val.created_at > t_now - amount.minute &&
-        #   val.created_at <= t_now - amount.minute + 1.minute
-        # end
-        time = (t_now - amount.minute..t_now - amount.minute + 1.minute)
-        temperature = TemperatureData.where(sensor_id: sensor.id, created_at: time)
-        temp_data << (temperature.to_a.sum(&:temp) / temperature.length.to_f).round(2)
+        temperature = temperature_data.select do |val|
+          val.sensor_id == sensor.id &&
+          val.created_at > t_now - amount.minute &&
+          val.created_at <= t_now - amount.minute + 1.minute
+        end
+        # time = (t_now - amount.minute..t_now - amount.minute + 1.minute)
+        # temperature = TemperatureData.where(sensor_id: sensor.id, created_at: time)
+        temp_data << (temperature.sum(&:temp) / temperature.length.to_f).round(2)
       end
       data << temp_data
     end
