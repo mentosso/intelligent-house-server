@@ -22,8 +22,8 @@ angular.module 'HouseApp'
       )
     $scope.dashboard()
 
-    $scope.labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-    $scope.series = ['Sensor A', 'Sensor B']
+    $scope.labels = []
+    $scope.series = []
     $scope.data = [
       [],
       []
@@ -32,6 +32,8 @@ angular.module 'HouseApp'
     $scope.temp_chart = () ->
       Home.temp_chart().then((data) ->
         console.log(data.data)
-        $scope.data = data.data
+        $scope.data = data.data[0]
+        $scope.labels = data.data[1]
+        $scope.series = data.data[2]
       )
     $scope.temp_chart()

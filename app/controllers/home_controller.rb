@@ -23,22 +23,31 @@ class HomeController < ApplicationController
 
   def temp_chart
     t_temp = Time.now
-    t_now = Time.new(t_temp.year, t_temp.month, t_temp.day, t_temp.hour, t_temp.min)
+    t_now = Time.new(t_temp.year, t_temp.month, t_temp.day,
+                     t_temp.hour, t_temp.min)
     temperature_data = TemperatureData.includes(:sensor).where(created_at: (t_now - 1.hour..t_now))
     data = []
+    time = create_labels
     Sensor.all.each do |sensor|
       temp_data = []
-      (0..60).reverse_each do |amount|
+      (0..59).reverse_each do |amount|
         temperature = temperature_data.select do |val|
           val.sensor_id == sensor.id &&
           val.created_at > t_now - amount.minute &&
           val.created_at <= t_now - amount.minute + 1.minute
         end
-
         temp_data << temperature.sum(&:temp) / temperature.length.to_f
       end
       data << temp_data
     end
-    render json: data
+    render json: [data, time, Sensor.all.pluck(:number)]
   end
+
+  def create_labels(time)
+    arr = []
+    (0..59).each do |amount|
+      arr << (time - amount.minute).strftime('%R')
+    end
+  end
+  arr
 end
