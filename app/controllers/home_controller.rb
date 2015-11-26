@@ -28,14 +28,12 @@ class HomeController < ApplicationController
     data = []
     Sensor.all.each do |sensor|
       temp_data = []
-      (0..60).reverse_each do |minute|
+      (0..60).reverse_each do |amount|
         temperature = temperature_data.select do |val|
           val.sensor_id == sensor.id &&
-          val.created_at >= t_now - minute &&
-          val.created_at <= t_now - minute + 1
+          val.created_at > t_now - amount.minute &&
+          val.created_at <= t_now - amount.minute + 1.minute
         end
-        # temperature = temp_data.where(sensor_id: sensor.id,
-        #                               created_at: t_now - minute).pluck(:temp)
 
         temp_data << temperature.sum(&:temp) / temperature.length.to_f
       end
