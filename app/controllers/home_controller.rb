@@ -27,7 +27,7 @@ class HomeController < ApplicationController
                      t_temp.hour, t_temp.min)
     temperature_data = TemperatureData.includes(:sensor).where(created_at: (t_now - 1.hour..t_now))
     data = []
-    time = create_labels
+    time = create_labels(t_now)
     Sensor.all.each do |sensor|
       temp_data = []
       (0..59).reverse_each do |amount|
