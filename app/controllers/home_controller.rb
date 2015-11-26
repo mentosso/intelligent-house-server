@@ -38,7 +38,7 @@ class HomeController < ApplicationController
         # end
         time = (t_now - amount.minute..t_now - amount.minute + 1.minute)
         temperature = TemperatureData.where(sensor_id: sensor.id, created_at: time)
-        temp_data << (temperature.sum(&:temp) / temperature.length.to_f)
+        temp_data << (temperature.to_a.sum(&:temp) / temperature.length.to_f).round(2)
       end
       data << temp_data
     end
