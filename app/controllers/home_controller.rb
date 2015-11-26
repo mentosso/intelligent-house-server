@@ -26,11 +26,11 @@ class HomeController < ApplicationController
     t_now = Time.new(t_temp.year, t_temp.month, t_temp.day, t_temp.hour, t_temp.min)
     temperature_data = TemperatureData.includes(:sensor).where(created_at: (t_now - 1.hour..t_now))
     data = []
-    (0..60).reverse_each do |minute|
+    Sensor.all.each do |sensor|
       temp_data = []
-      Sensor.all.each do |sensor|
+      (0..60).reverse_each do |minute|
         temperature = temperature_data.select do |val|
-          val.sensor.id == sensor.id &&
+          val.sensor_id == sensor.id &&
           val.created_at >= t_now - minute &&
           val.created_at <= t_now - minute + 1
         end
