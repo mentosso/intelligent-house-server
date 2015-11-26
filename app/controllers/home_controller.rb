@@ -10,8 +10,8 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    avg_temp = TemperatureData.last(10).to_a.sum(&:temp) / 10.to_f
-    avg_humid = HumidityData.last(10).to_a.sum(&:humid) / 10.to_f
+    avg_temp = TemperatureData.last(100).to_a.sum(&:temp) / 100.to_f
+    avg_humid = HumidityData.last(100).to_a.sum(&:humid) / 100.to_f
     sensors = Sensor.where(state: true).count
     res = {
       avg_temp: avg_temp,
@@ -22,10 +22,24 @@ class HomeController < ApplicationController
   end
 
   def temp_chart
+    t_temp = Time.now
+    t_now = Time.new(t_temp.year, t_temp.month, t_temp.day, t_temp.hour, t_temp.min)
+    temperature_data = TemperatureData.includes(:sensor).where(created_at: (t_now - 1.hour..t_now))
     data = []
-    Sensor.all.each do |sensor|
-      data << TemperatureData.where(sensor_id: sensor.id).order(id: :desc)
-        .limit(10).pluck(:temp)
+    (0..60).reverse_each do |minute|
+      temp_data = []
+      Sensor.all.each do |sensor|
+        temperature = temperature_data.select do |val|
+          val.sensor.id == sensor.id &&
+          val.created_at >= t_now - minute &&
+          val.created_at <= t_now - minute + 1
+        end
+        # temperature = temp_data.where(sensor_id: sensor.id,
+        #                               created_at: t_now - minute).pluck(:temp)
+
+        temp_data << temperature.sum(&:temp) / temperature.length.to_f
+      end
+      data << temp_data
     end
     render json: data
   end
