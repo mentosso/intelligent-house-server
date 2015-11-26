@@ -45,7 +45,7 @@ class HomeController < ApplicationController
 
   def create_labels(time)
     arr = []
-    (0..59).each do |amount|
+    (0..59).reversed_each do |amount|
       arr << (time - amount.minute).strftime('%R')
     end
     arr
