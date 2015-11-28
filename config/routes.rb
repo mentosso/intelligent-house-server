@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'notification/index'
+
   devise_for :users, controllers: { sessions: 'sessions',
                                     registrations: 'registrations' }
   # The priority is based upon order of creation: first created -> highest priority.
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :rooms
   resources :sensors
+  resources :notifications
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

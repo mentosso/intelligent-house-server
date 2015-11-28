@@ -7,6 +7,7 @@
 #= require angular-devise
 #= require chartjs
 #= require angular-chart.js
+#= require angular-timeago
 
 #= require app
 #= require routes

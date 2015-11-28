@@ -39,7 +39,6 @@ nav.navbar-default.navbar-side role="navigation"
     .row
       .col-md-12
         h1.page-head-line DASHBOARD
-        / h1.page-subhead-line This is dummy text , you can replace it with your original text.
     /! /. ROW
     .row
       .col-md-4
@@ -69,135 +68,14 @@ nav.navbar-default.navbar-side role="navigation"
             i.fa.fa-bell.fa-fw
             | Notifications Panel
           .panel-body
-            .list-group
-              a.list-group-item href="#" 
-                i.fa.fa-twitter.fa-fw
-                | 3 New Followers
+            .list-group ng-repeat="notif in notifications"
+              a.list-group-item
+                i.fa ng-class="notif.message_type == 'error' ? 'fa-warning' : 'fa-bolt'" class="fa-fw"
+                | {{ notif.message }}
                 span.pull-right.text-muted.small
-                  em 12 minutes ago
-              a.list-group-item href="#" 
-                i.fa.fa-envelope.fa-fw
-                | Message Sent
-                span.pull-right.text-muted.small
-                  em 27 minutes ago
-              a.list-group-item href="#" 
-                i.fa.fa-tasks.fa-fw
-                | New Task
-                span.pull-right.text-muted.small
-                  em 43 minutes ago
-              a.list-group-item href="#" 
-                i.fa.fa-upload.fa-fw
-                | Server Rebooted
-                span.pull-right.text-muted.small
-                  em 11:32 AM
-              a.list-group-item href="#" 
-                i.fa.fa-bolt.fa-fw
-                | Server Crashed!
-                span.pull-right.text-muted.small
-                  em 11:13 AM
-              a.list-group-item href="#" 
-                i.fa.fa-warning.fa-fw
-                | Server Not Responding
-                span.pull-right.text-muted.small
-                  em 10:57 AM
-              a.list-group-item href="#" 
-                i.fa.fa-bolt.fa-fw
-                | Server Crashed!
-                span.pull-right.text-muted.small
-                  em 11:13 AM
-              a.list-group-item href="#" 
-                i.fa.fa-warning.fa-fw
-                | Server Not Responding
-                span.pull-right.text-muted.small
-                  em 10:57 AM
-              a.list-group-item href="#" 
-                i.fa.fa-shopping-cart.fa-fw
-                | New Order Placed
-                span.pull-right.text-muted.small
-                  em 9:49 AM
+                  em
+                  | {{ notif.created_at | timeAgo }}
             /! /.list-group
             a.btn.btn-info.btn-block href="#"  View All Alerts
       .col-md-8
-        canvas#line.chart.chart-line chart-data="data" chart-labels="labels" chart-series="series" options="options"
-    hr
-    .row
-      .col-md-8
-        .table-responsive
-          table.table.table-striped.table-bordered.table-hover
-            thead
-              tr
-                th #
-                th First Name
-                th Last Name
-                th Username
-                th User No.
-            tbody
-              tr
-                td 1
-                td
-                  span.label.label-danger Mark
-                td Otto
-                td @mdo
-                td
-                  span.label.label-info 100090
-              tr
-                td 2
-                td Jacob
-                td Thornton
-                td @fat
-                td 100090
-              tr
-                td 3
-                td Larry
-                td
-                  span.label.label-danger the Bird
-                td @twitter
-                td 100090
-              tr
-                td 4
-                td
-                  span.label.label-success Mark
-                td Otto
-                td @mdo
-                td
-                  span.label.label-info 100090
-              tr
-                td 5
-                td Larry
-                td
-                  span.label.label-primary the Bird
-                td @twitter
-                td 100090
-              tr
-                td 6
-                td
-                  span.label.label-warning Jacob
-                td
-                  span.label.label-success Thornton
-                td @fat
-                td
-                  span.label.label-danger 100090
-              tr
-                td 7
-                td Larry
-                td
-                  span.label.label-primary the Bird
-                td @twitter
-                td 100090
-              tr
-                td 8
-                td
-                  span.label.label-warning Jacob
-                td
-                  span.label.label-success Thornton
-                td @fat
-                td
-                  span.label.label-danger 100090
-              tr
-                td 9
-                td
-                  span.label.label-success Mark
-                td Otto
-                td @mdo
-                td
-                  span.label.label-info 100090
+        canvas#line.chart.chart-line chart-data="data" chart-labels="labels" chart-series="series" chart-options="options"

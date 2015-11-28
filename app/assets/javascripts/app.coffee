@@ -1,4 +1,4 @@
-IntelHouse = angular.module('HouseApp', ['ui.router', 'templates', 'Devise', 'chart.js'])
+IntelHouse = angular.module('HouseApp', ['ui.router', 'templates', 'Devise', 'chart.js', 'yaru22.angular-timeago'])
 
 
 IntelHouse.config ($provide, $httpProvider) ->

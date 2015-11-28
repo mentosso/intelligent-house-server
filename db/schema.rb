@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102171329) do
+ActiveRecord::Schema.define(version: 20151128120433) do
 
   create_table "actuators", force: :cascade do |t|
     t.string   "number",     limit: 255
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20151102171329) do
   end
 
   add_index "humidity_data", ["sensor_id"], name: "index_humidity_data_on_sensor_id", using: :btree
+
+  create_table "notifications", force: :cascade do |t|
+    t.string   "message",      limit: 255
+    t.string   "message_type", limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "rooms", force: :cascade do |t|
     t.string   "name",       limit: 255
