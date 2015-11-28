@@ -1,5 +1,6 @@
 angular.module 'HouseApp'
-  .config ($stateProvider, $urlRouterProvider) ->
+  .config ['$stateProvider', '$urlRouterProvider',
+  ($stateProvider, $urlRouterProvider) ->
     $urlRouterProvider.otherwise('/home')
 
     $stateProvider
@@ -28,3 +29,4 @@ angular.module 'HouseApp'
         controller: 'SensorCtrl',
         templateUrl: 'sensor.html'
       })
+]
