@@ -1,5 +1,6 @@
 angular.module('HouseApp')
-  .controller 'UserCtrl', ($scope, $http, $location, User, Auth) ->
+  .controller 'UserCtrl', ['$scope', '$http', '$location', 'User', 'Auth',
+  ($scope, $http, $location, User, Auth) ->
     $scope.registerUser = (email, password, password_confirmation) ->
       User.registerUser(email, password, password_confirmation).success (data) ->
         $location.path('/home')
@@ -10,3 +11,4 @@ angular.module('HouseApp')
       (error) ->
         # Authentication failed...
       )
+  ]

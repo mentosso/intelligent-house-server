@@ -1,5 +1,5 @@
 angular.module 'HouseApp'
-  .controller 'HomeCtrl', ['$http', '$scope', '$location', '$interval', 'Auth', 'Home', 'Notification' 
+  .controller 'HomeCtrl', ['$http', '$scope', '$location', '$interval', 'Auth', 'Home', 'Notification',
   ($http, $scope, $location, $interval, Auth, Home, Notification)->
     Auth.currentUser().then((user) ->
       # User was logged in, or Devise returned

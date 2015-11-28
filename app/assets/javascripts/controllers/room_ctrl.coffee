@@ -1,5 +1,6 @@
 angular.module 'HouseApp'
-  .controller 'RoomCtrl', ($http, $scope, $location, Auth, Room)->
+  .controller 'RoomCtrl', ['$http', '$scope', '$location', 'Auth', 'Room',
+  ($http, $scope, $location, Auth, Room)->
     Auth.currentUser().then((user) ->
       # User was logged in, or Devise returned
       # previously authenticated session.
@@ -28,3 +29,4 @@ angular.module 'HouseApp'
       (error) ->
         console.log('error')
       )
+  ]

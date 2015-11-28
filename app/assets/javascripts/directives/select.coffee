@@ -1,4 +1,4 @@
-angular.module('HouseApp').directive 'selectpicker', ($timeout) ->
+angular.module('HouseApp').directive 'selectpicker', ['$timeout', ($timeout) ->
   {
     restrict: 'A'
     link: (scope, element, attributes) ->
@@ -9,3 +9,4 @@ angular.module('HouseApp').directive 'selectpicker', ($timeout) ->
           console.log 'selected ', newValue
       ), 0
   }
+]
