@@ -22,30 +22,27 @@ class HomeController < ApplicationController
   end
 
   def temp_chart
-    t_temp = Time.now
-    t_now = Time.new(t_temp.year, t_temp.month, t_temp.day,
-                     t_temp.hour, t_temp.min)
+    t_temp = Time.zone.now
+    @t_now = Time.new(t_temp.year, t_temp.month, t_temp.day,
+                      t_temp.hour, t_temp.min, 0, Time.zone.now.strftime('%:z'))
     # temperature_data = TemperatureData.includes(:sensor).where(created_at: (t_now - 1.hour..t_now))
     data = []
-    time = create_labels(t_now)
+    time = create_labels(@t_now)
     Sensor.all.each do |sensor|
       temperature_data = TemperatureData.includes(:sensor).where(sensor_id: sensor.id,
-                                                                 created_at: (t_now - 1.hour..t_now))
+                                                                 created_at: (@t_now - 1.hour..@t_now))
       temp_data = []
-      arr_index = 0
+      @arr_index = 0
       (0..59).reverse_each do |amount|
-        temperature = temperature_data[arr_index..-1].each_with_index do |val, index|
-          if val.created_at > t_now - amount.minute
-            arr_index = index
-            break
-          end
-          val.sensor_id == sensor.id &&
-          val.created_at > t_now - amount.minute &&
-          val.created_at <= t_now - amount.minute + 1.minute
-        end
-        # time = (t_now - amount.minute..t_now - amount.minute + 1.minute)
+        temperature = get_array_from_minute(amount, temperature_data,
+                                            sensor, @t_now)
+        # time = (@t_now - amount.minute..@t_now - amount.minute + 1.minute)
         # temperature = TemperatureData.where(sensor_id: sensor.id, created_at: time)
-        temp_data << (temperature.sum(&:temp) / temperature.length.to_f).round(2)
+        if temperature.present?
+          temp_data << (temperature.sum(&:temp) / temperature.length.to_f).round(2)
+        else
+          temp_data << []
+        end
       end
       data << temp_data
     end
@@ -58,5 +55,19 @@ class HomeController < ApplicationController
       arr << (time - amount.minute).strftime('%R')
     end
     arr
+  end
+
+  def get_array_from_minute(amount, arr, sensor, time)
+    data = []
+    arr[@arr_index..-1].each_with_index do |val, index|
+      if val.created_at > time - amount.minute
+        @arr_index = index
+        break
+      end
+      data << val if val.sensor_id == sensor.id &&
+                     val.created_at <= time - amount.minute &&
+                     val.created_at >= time - amount.minute - 1.minute
+    end
+    data
   end
 end

@@ -28,6 +28,9 @@ angular.module 'HouseApp'
       [],
       []
     ]
+    $scope.options = {
+      pointHitDetectionRadius : 5
+    }
 
     $scope.temp_chart = () ->
       Home.temp_chart().then((data) ->

@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :sensor do
-    number "MyString"
-state false
-room nil
+    number '123'
+    state false
+    room
   end
-
 end

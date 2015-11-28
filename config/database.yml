@@ -19,6 +19,10 @@ default: &default
 
 development:
   <<: *default
+  host: 192.168.0.104
+  port: 3306
+  username: root
+  password: root
   database: intelligent-house-server_development
 
 # Warning: The database defined as "test" will be erased and

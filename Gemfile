@@ -52,6 +52,7 @@ gem 'devise'
 # gem 'capistrano-rails', group: :development
 
 gem 'passenger'
+gem 'clockwork', '~> 1.2'
 
 gem 'awesome_print'
 
