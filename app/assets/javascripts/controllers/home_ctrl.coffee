@@ -1,5 +1,6 @@
 angular.module 'HouseApp'
-  .controller 'HomeCtrl', ($http, $scope, $location, $interval, Auth, Home, Notification)->
+  .controller 'HomeCtrl', ['$http', '$scope', '$location', '$interval', 'Auth', 'Home', 'Notification' 
+  ($http, $scope, $location, $interval, Auth, Home, Notification)->
     Auth.currentUser().then((user) ->
       # User was logged in, or Devise returned
       # previously authenticated session.
@@ -51,3 +52,4 @@ angular.module 'HouseApp'
       $scope.fetch_notifications()
       $scope.temp_chart()
     ).bind(this), 60000
+  ]
