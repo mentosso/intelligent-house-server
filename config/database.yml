@@ -21,8 +21,6 @@ development:
   <<: *default
   host: 192.168.0.104
   port: 3306
-  username: root
-  password: root
   database: intelligent-house-server_development
 
 # Warning: The database defined as "test" will be erased and
@@ -53,6 +51,7 @@ test:
 #
 production:
   <<: *default
-  database: intelligent-house-server_production
-  username: intelligent-house-server
-  password: <%= ENV['INTELLIGENT-HOUSE-SERVER_DATABASE_PASSWORD'] %>
+  database: intelligent-house-server_development
+  # database: intelligent-house-server_production
+  # username: intelligent-house-server
+  # password: <%= ENV['INTELLIGENT-HOUSE-SERVER_DATABASE_PASSWORD'] %>
