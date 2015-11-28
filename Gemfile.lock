@@ -56,6 +56,9 @@ GEM
     byebug (5.0.0)
       columnize (= 0.9.0)
     choice (0.2.0)
+    clockwork (1.2.0)
+      activesupport
+      tzinfo
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -256,6 +259,7 @@ DEPENDENCIES
   angular-rails
   angular-rails-templates
   awesome_print
+  clockwork (~> 1.2)
   coffee-rails (~> 4.1.0)
   devise
   factory_girl_rails
