@@ -29,4 +29,14 @@ angular.module 'HouseApp'
         controller: 'SensorCtrl',
         templateUrl: 'sensor.html'
       })
+      .state('temp_chart', {
+        url: '/temp_chart',
+        controller: 'ChartCtrl',
+        templateUrl: 'temp_chart.html'
+      })
+      .state('humid_chart', {
+        url: '/humid_chart',
+        controller: 'ChartCtrl',
+        templateUrl: 'humid_chart.html'
+      })
 ]

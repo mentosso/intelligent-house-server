@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128120433) do
+ActiveRecord::Schema.define(version: 20151129103107) do
 
   create_table "actuators", force: :cascade do |t|
     t.string   "number",     limit: 255
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20151128120433) do
   add_index "actuators", ["room_id"], name: "index_actuators_on_room_id", using: :btree
 
   create_table "humidity_data", force: :cascade do |t|
-    t.decimal  "humid",                precision: 10
+    t.decimal  "value",                precision: 10
     t.integer  "sensor_id",  limit: 4
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20151128120433) do
   add_index "sensors", ["room_id"], name: "index_sensors_on_room_id", using: :btree
 
   create_table "temperature_data", force: :cascade do |t|
-    t.decimal  "temp",                 precision: 10
+    t.decimal  "value",                precision: 10
     t.integer  "sensor_id",  limit: 4
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false

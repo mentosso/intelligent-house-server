@@ -7,9 +7,6 @@ nav.navbar.navbar-default.navbar-cls-top role="navigation" style=("margin-bottom
       span.icon-bar
     a.navbar-brand href="/#/home"  InteliHouse
   .header-right
-    a.btn.btn-primary href="message-task.html" title="New Task"
-      b 40
-      i.fa.fa-bars.fa-2x
     a.btn.btn-danger ng-click="logout()" title="Logout" 
       i.fa.fa-exclamation-circle.fa-2x
 /! /. NAV TOP
@@ -47,49 +44,8 @@ nav.navbar-default.navbar-side role="navigation"
             a href="/#/humid_chart" 
               i.fa.fa-line-chart
               | Humidity
-
-        
-/! /. NAV SIDE
 #page-wrapper
   #page-inner
     .row
       .col-md-12
-        h1.page-head-line DASHBOARD
-    /! /. ROW
-    .row
-      .col-md-4
-        .main-box.mb-red
-          a href="#" 
-            i.wi.wi-thermometer 
-              |  {{ avg.avg_temp }}&deg;C
-          h5 temperature inside
-      .col-md-4
-        .main-box.mb-dull
-          a href="#" 
-            i.fa.fa-tint.fa-5x
-              |  {{ avg.avg_humid }}%
-          h5 humidity inside 
-      .col-md-4
-        .main-box.mb-pink
-          a href="#" 
-            i.fa.fa-server.fa-5x
-              |  {{ avg.sensors }}
-          h5 active sensors
-             
-    /! /. ROW
-    .row
-      .col-md-4
-        .panel.panel-info
-          .panel-heading
-            i.fa.fa-bell.fa-fw
-            | Notifications Panel
-          .panel-body
-            .list-group ng-repeat="notif in notifications"
-              a.list-group-item
-                i.fa ng-class="notif.message_type == 'error' ? 'fa-warning' : 'fa-bolt'" class="fa-fw"
-                | {{ notif.message }}
-                span.pull-right.text-muted.small
-                  em
-                  | {{ notif.created_at | timeAgo }}
-      .col-md-8
-        canvas#line.chart.chart-line chart-data="data" chart-labels="labels" chart-series="series" chart-options="options"
+        canvas#line.chart.chart-line chart-data="temp_data" chart-labels="temp_labels" chart-series="temp_series" chart-options="options"

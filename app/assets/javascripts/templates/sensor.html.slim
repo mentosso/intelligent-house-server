@@ -33,6 +33,20 @@ nav.navbar-default.navbar-side role="navigation"
         a href="/#/sensor" 
           i.fa.fa-server
           | Sensors
+      li
+        a href="#" ng-model="collapse" ng-click="collapse=!collapse"
+          i.fa.fa-bookmark
+          | Charts
+          span.fa.arrow
+        ul.nav.nav-second-level ng-show="collapse"
+          li
+            a href="/#/temp_chart" 
+              i.fa.fa-line-chart
+              | Temperature
+          li
+            a href="/#/humid_chart" 
+              i.fa.fa-line-chart
+              | Humidity
 #page-wrapper
   #page-inner
     .row

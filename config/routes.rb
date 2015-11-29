@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post 'users/check' => 'home#check'
   get 'home/dashboard' => 'home#dashboard'
   get 'home/temp_chart' => 'home#temp_chart'
+  get 'home/humid_chart' => 'home#humid_chart'
 
   resources :rooms
   resources :sensors
