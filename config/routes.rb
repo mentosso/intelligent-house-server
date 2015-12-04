@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tasks
   get 'notification/index'
 
   devise_for :users, controllers: { sessions: 'sessions',

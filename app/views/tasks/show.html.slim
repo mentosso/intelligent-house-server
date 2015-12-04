@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Action:
+  = @task.action
+p
+  strong Actuator:
+  = @task.actuator
+
+= link_to 'Edit', edit_task_path(@task)
+'|
+= link_to 'Back', tasks_path
